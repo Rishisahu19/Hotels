@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
 const db = require('./db');
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());  // Because of this In Req.Body= Json data will come.
+const PORT=process.env.PORT || 3000
 
 // const Person = require('./models/Person')
 // const MenuItem = require('./models/menu')
@@ -118,6 +120,8 @@ app.use('/person',personRouter);
 const MenuRouter=require('./routes/menuRoutes');
 app.use('/menu',MenuRouter);
 
-app.listen(3000, () => {
+
+
+app.listen(PORT, () => {
     console.log("Listening on Port 3000");
 });
